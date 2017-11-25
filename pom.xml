@@ -22,8 +22,42 @@
     </modules>
 
     <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
+        <jaxrs.version>2.1</jaxrs.version>
+        <cdi.version>2.0</cdi.version>
 
+        <jackson.version>2.9.2</jackson.version>
+        <jersey.version>2.26</jersey.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.github.dognjen</groupId>
+                <artifactId>crypto-exchange-bittrex</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>javax.ws.rs-api</artifactId>
+                <version>${jaxrs.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.enterprise</groupId>
+                <artifactId>cdi-api</artifactId>
+                <version>${cdi.version}</version>
+            </dependency>
+
+            <!-- Jersey -->
+
+            <!-- Jackson -->
+
+        </dependencies>
+    </dependencyManagement>
 
 
 </project>

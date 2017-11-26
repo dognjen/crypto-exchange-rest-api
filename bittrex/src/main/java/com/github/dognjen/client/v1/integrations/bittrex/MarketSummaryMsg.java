@@ -7,15 +7,15 @@ import java.util.List;
 /**
  * Created by Dejan Ognjenović on 26/11/2017.
  */
-public class MarketMsg extends MessageBittrex {
+public class MarketSummaryMsg extends MessageBittrex {
 
-    private List<Market> result;
+    private List<MarketSummary> result;
 
-    public List<Market> getResult() {
+    public List<MarketSummary> getResult() {
         return result;
     }
 
-    public void setResult(List<Market> result) {
+    public void setResult(List<MarketSummary> result) {
         this.result = result;
     }
 }

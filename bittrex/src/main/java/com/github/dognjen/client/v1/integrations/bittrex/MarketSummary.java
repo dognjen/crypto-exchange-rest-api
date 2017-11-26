@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by Dejan Ognjenović on 26/11/2017.
  */
-public class Market {
+public class MarketSummary {
 
     private String marketName;
 

@@ -1,7 +1,5 @@
 package com.github.dognjen.client.v1.integrations.bittrex;
 
-import com.github.dognjen.client.v1.integrations.MessageBittrex;
-
 import java.math.BigDecimal;
 import java.util.Date;
 

@@ -1,6 +1,7 @@
 package com.github.dognjen.client.v1.impl;
 
 import com.github.dognjen.client.v1.BittrexClient;
+import com.github.dognjen.client.v1.integrations.bittrex.Market;
 import com.github.dognjen.client.v1.integrations.bittrex.MarketSummaryMsg;
 import com.github.dognjen.client.v1.utils.ClientUtils;
 import com.github.dognjen.client.v1.utils.properties.BittrexProperties;
@@ -39,11 +40,9 @@ public class BittrexClientImpl implements BittrexClient {
 
     }
 
-    public List<MarketSummary> getMarkets() {
-        List<MarketSummary> marketSummaries = client.target("https://bittrex.com/api/v1.1/public/getmarkets").
-                request(MediaType.APPLICATION_JSON_TYPE).get(MarketSummaryMsg.class).getResult();
-
-        return marketSummaries;
+    public void getMarkets() {
+        client.target("https://bittrex.com/api/v1.1/public/getmarkets").
+                request(MediaType.APPLICATION_JSON_TYPE).get(Market.class);
 
 
     }
@@ -57,9 +56,18 @@ public class BittrexClientImpl implements BittrexClient {
 
     public void getTicker() {
 
+
+        List<MarketSummary> marketSummaries = client.target("https://bittrex.com/api/v1.1/public/getticker").
+                request(MediaType.APPLICATION_JSON_TYPE).get(MarketSummaryMsg.class).getResult();
+
     }
 
-    public void getMarketSummaries() {
+    public List<MarketSummary> getMarketSummaries() {
+
+        List<MarketSummary> marketSummaries = client.target("https://bittrex.com/api/v1.1/public/getmarketsummaries").
+                request(MediaType.APPLICATION_JSON_TYPE).get(MarketSummaryMsg.class).getResult();
+
+        return marketSummaries;
 
     }
 

@@ -7,13 +7,13 @@ import java.util.List;
 public interface BittrexClient {
 
     // general
-    List<MarketSummary> getMarkets();
+    void getMarkets();
 
     void getCurrencies();
 
     void getTicker();
 
-    void getMarketSummaries();
+    List<MarketSummary> getMarketSummaries();
 
     void getMarketSummary();
 

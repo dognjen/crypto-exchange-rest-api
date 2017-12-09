@@ -1,9 +1,13 @@
 package com.github.dognjen.client.v1;
 
+import com.github.dognjen.client.v1.integrations.bittrex.MarketSummary;
+
+import java.util.List;
+
 public interface BittrexClient {
 
     // general
-    void getMarkets();
+    List<MarketSummary> getMarkets();
 
     void getCurrencies();
 

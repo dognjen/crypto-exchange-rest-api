@@ -1,8 +1,10 @@
 package com.github.dognjen.client.v1.impl;
 
 import com.github.dognjen.client.v1.BittrexClient;
+import com.github.dognjen.client.v1.integrations.bittrex.MarketSummaryMsg;
 import com.github.dognjen.client.v1.utils.ClientUtils;
 import com.github.dognjen.client.v1.utils.properties.BittrexProperties;
+import com.github.dognjen.client.v1.integrations.bittrex.MarketSummary;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -10,6 +12,7 @@ import javax.inject.Inject;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * Created by Dejan Ognjenović on 12/11/2017.
@@ -29,19 +32,26 @@ public class BittrexClientImpl implements BittrexClient {
     private void init() {
 
         // TODO if url in config
-        target = client.target(ClientUtils.BITTREX_REST_ENDPOINT)
+        /*target = client.target(ClientUtils.BITTREX_REST_ENDPOINT)
                         .queryParam("apikey", properties.getBittrexApikey())
                         .queryParam("nonce", properties.getBittrexNonce());
+                        */
+
     }
 
-    public void getMarkets() {
+    public List<MarketSummary> getMarkets() {
+        List<MarketSummary> marketSummaries = client.target("https://bittrex.com/api/v1.1/public/getmarkets").
+                request(MediaType.APPLICATION_JSON_TYPE).get(MarketSummaryMsg.class).getResult();
 
-        target.request(MediaType.APPLICATION_JSON_TYPE).get();
+        return marketSummaries;
 
 
     }
 
     public void getCurrencies() {
+
+        List<MarketSummary> marketSummaries = client.target("https://bittrex.com/api/v1.1/public/getcurrencies").
+                request(MediaType.APPLICATION_JSON_TYPE).get(MarketSummaryMsg.class).getResult();
 
     }
 

@@ -1,1 +1,1 @@
-# crypto-exchange-java-api
+# crypto-exchange-rest-api
